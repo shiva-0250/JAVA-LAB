@@ -28,7 +28,7 @@ sc.close();
 ## output:
 ![output of 6a](6a.png)
 
-## 6.B.Illustrating Multiple catch clauses
+## 6.B.illustrating Multiple catch clauses
 ## Source code:
 ``` java
 import java.util.Scanner;
