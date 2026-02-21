@@ -3,10 +3,8 @@
 ## Source code:
 ``` java
 import java.util.Scanner;
-
 // Custom Exception Class
 class InvalidCountryException extends Exception {
-
     // Default Constructor
     InvalidCountryException() {
         super();
@@ -17,10 +15,8 @@ class InvalidCountryException extends Exception {
         super(message);
     }
 }
-
 // User Registration Class
 class UserRegistration {
-
     void registerUser(String username, String userCountry) 
             throws InvalidCountryException {
 
@@ -33,24 +29,17 @@ class UserRegistration {
         }
     }
 }
-
 // Main Class
 public class  UserRegion {
-
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-
         try {
             System.out.print("Enter the user name: ");
             String uname = sc.nextLine();
-
             System.out.print("Enter the country name: ");
             String ucountry = sc.nextLine();
-
             UserRegistration ur = new UserRegistration();
             ur.registerUser(uname, ucountry);
-
         } 
         catch (InvalidCountryException e) {
             System.out.println(e.getMessage());
@@ -72,80 +61,63 @@ public class  UserRegion {
 ## 7.B.Creates threads by extending thread class
 ## Source code:
 ``` java
-// Thread 1
-class GoodMorningThread extends Thread
-{
-    public void run()
-    {
-        try
-        {
-            while(true)
-            {
+//Thread 1
+class GoodMorningThread extends Thread {
+    public void run() {
+        try {
+            while(true) {
                 System.out.println("Good Morning");
                 Thread.sleep(1000);
             }
         }
-        catch(InterruptedException e)
-        {
+        catch(InterruptedException e) {
             System.out.println(e);
         }
     }
 }
 
 // Thread 2
-class HelloThread extends Thread
-{
-    public void run()
-    {
-        try
-        {
-            while(true)
-            {
+class HelloThread extends Thread {
+    public void run() {
+        try{
+            while(true) {
                 System.out.println("Hello");
                 Thread.sleep(2000);
             }
         }
-        catch(InterruptedException e)
-        {
+        catch(InterruptedException e) {
             System.out.println(e);
         }
     }
 }
 
 // Thread 3
-class WelcomeThread extends Thread
-{
-    public void run()
-    {
-        try
-        {
-            while(true)
-            {
+class WelcomeThread extends Thread {
+    public void run() {
+        try {
+            while(true) {
                 System.out.println("Welcome");
                 Thread.sleep(3000);
             }
         }
-        catch(InterruptedException e)
-        {
+        catch(InterruptedException e) {
             System.out.println(e);
         }
     }
 }
 
 // Main class
-public class TestThreads
-{
-    public static void main(String[] args)
-    {
+public class TestThreads {
+    public static void main(String[] args) {
         GoodMorningThread t1 = new GoodMorningThread();
         HelloThread t2 = new HelloThread();
         WelcomeThread t3 = new WelcomeThread();
-
         t1.start();
         t2.start();
         t3.start();
     }
 }
+
 ```
 ## output:
 ![output of 7b](7b.png)
@@ -154,12 +126,9 @@ public class TestThreads
 ## Source code:
 ``` java
 // Long running task thread
-class LongRunningTask extends Thread
-{
-    public void run()
-    {
-        try
-        {
+class LongRunningTask extends Thread {
+    public void run() {
+        try {
             System.out.println("Long running task started...");
             for(int i = 1; i <= 5; i++)
             {
@@ -168,36 +137,25 @@ class LongRunningTask extends Thread
             }
             System.out.println("Long running task completed!");
         }
-        catch(InterruptedException e)
-        {
+        catch(InterruptedException e){
             System.out.println(e);
         }
     }
 }
-
 // Main class
-public class ThreadDemo
-{
-    public static void main(String[] args)
-    {
+public class ThreadDemo {
+    public static void main(String[] args) {
         LongRunningTask task1 = new LongRunningTask();
-
         System.out.println("Before starting task1: " + task1.isAlive());
-
         task1.start();
-
         System.out.println("After starting task1: " + task1.isAlive());
-
-        try
-        {
+        try  {
             System.out.println("Main thread waiting for task1 to complete using join()...");
             task1.join();
         }
-        catch(InterruptedException e)
-        {
+        catch(InterruptedException e)  {
             System.out.println(e);
         }
-
         System.out.println("After join(): " + task1.isAlive());
         System.out.println("Main thread continues after task1 completed");
     }
